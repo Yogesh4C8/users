@@ -12,26 +12,16 @@ function EditUserForm(props) {
     const [userCode, setUserCode] = useState(state[0].userCode);
     console.log(">>>",userId,name,userCode)
     let navigate = useNavigate()
-    const userIdHandler = (e) => {
-        setUserId(e.target.value)
-    }
-    const nameHandler = (e) => {
-        setName(e.target.value)
-    }
-    const userCodeHandler = (e) => {
-        setUserCode(e.target.value)
-    }
+    
 
     const submitHandler = (e) => {
         e.preventDefault();
-        // setUsers([...users,{"userCode":userCode,"name":name,"userId":userId}])
         users.map((user)=>{
             console.log(users)
             if(user.userId === userId){
                 user.name = name
                 user.userCode = userCode
             }
-            // setUsers(users)
             return users
         })
         navigate("/", { state: { from: { pathname: "/editUser" } } })
@@ -46,19 +36,19 @@ function EditUserForm(props) {
                     <div>
                         <Form.Group className="mb-3">
                             <Form.Label>User Id</Form.Label>
-                            <Form.Control type="text" placeholder="Enter user Id" value={userId} onChange={userIdHandler}/>
+                            <Form.Control type="text" placeholder="Enter user Id" value={userId} onChange={e => setUserId(e.target.value)}/>
                         </Form.Group>
                     </div>
                     <div>
                         <Form.Group className="mb-3">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" value={name} onChange={nameHandler}/>
+                            <Form.Control type="text" placeholder="Enter Name" value={name} onChange={e => setName(e.target.value)}/>
                         </Form.Group>
                     </div>
                     <div>
                         <Form.Group className="mb-3">
                             <Form.Label>User Code</Form.Label>
-                            <Form.Control type="text" placeholder="Enter User Code" value={userCode}  onChange={userCodeHandler}/>
+                            <Form.Control type="text" placeholder="Enter User Code" value={userCode}  onChange={e => setUserCode(e.target.value)}/>
                         </Form.Group>
                     </div>
                     <Button variant="primary" type="submit">

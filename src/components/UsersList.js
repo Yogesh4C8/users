@@ -10,7 +10,7 @@ function UsersList(props) {
     const inputEl = useRef("")
     let navigate = useNavigate()
     
-    let renderedUsersList = users.map((user,i) => (
+    let renderedUsersList = users.map((user) => (
         <tr key={user.userId}>
             <td>{user.userId}</td>
             <td>{user.name}</td>
